@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Tarea.css';
 
-const Tarea = ({ tarea, eliminarTarea, actualizarTarea }) => {
+const Tarea = ({ tarea, eliminarTarea, actualizarTarea, setTareaEditando }) => {
     const [modoEdicion, setModoEdicion] = useState(false);
     const [tituloEditado, setTituloEditado] = useState(tarea.titulo);
     const [descripcionEditada, setDescripcionEditada] = useState(tarea.descripcion);
@@ -41,7 +41,7 @@ const Tarea = ({ tarea, eliminarTarea, actualizarTarea }) => {
                     </div>
                     <p>{tarea.descripcion}</p>
                     <button onClick={() => eliminarTarea(tarea.id)}>Eliminar</button>
-                    <button onClick={() => setModoEdicion(true)}>Editar</button>
+                    <button onClick={() => setTareaEditando(tarea)}>Editar</button>
                 </>
             )}
         </li>

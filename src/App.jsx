@@ -6,6 +6,7 @@ import './App.css';
 
 function App() {
   const [tareas, setTareas] = useState([]);
+  const [tareaEditando, setTareaEditando] = useState(null);
 
   const agregarTarea = (tarea) => {
     const nuevaTarea = {
@@ -33,11 +34,17 @@ function App() {
     <>
       <div>
         <h1>Gestión de Tareas</h1>
-        <FormularioTarea onSubmit={agregarTarea} />
+        <FormularioTarea
+          onSubmit={agregarTarea}
+          tareaEditando={tareaEditando}
+          actualizarTarea={actualizarTarea}
+          setTareaEditando={setTareaEditando}
+        />
         <ListaTareas
           tareas={tareas}
           eliminarTarea={eliminarTarea}
           actualizarTarea={actualizarTarea}
+          setTareaEditando={setTareaEditando}
         />
       </div>
     </>

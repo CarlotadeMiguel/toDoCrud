@@ -2,7 +2,7 @@ import React from 'react';
 import Tarea from '../Tarea/Tarea';
 import './ListaTareas.css';
 
-const ListaTareas = ({ tareas, eliminarTarea, actualizarTarea }) => {
+const ListaTareas = ({ tareas, eliminarTarea, actualizarTarea, setTareaEditando }) => {
     return (
         <div>
             {tareas.length === 0 ? (
@@ -15,6 +15,7 @@ const ListaTareas = ({ tareas, eliminarTarea, actualizarTarea }) => {
                             tarea={tarea}
                             eliminarTarea={eliminarTarea}
                             actualizarTarea={actualizarTarea}
+                            setTareaEditando={setTareaEditando}
                         />
                     ))}
                 </ul>

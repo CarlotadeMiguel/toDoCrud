@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FormularioTarea.css';
 
-const FormularioTarea = ({ onSubmit }) => {
+const FormularioTarea = ({ onSubmit, tareaEditando, actualizarTarea, setTareaEditando }) => {
     const [titulo, setTitulo] = useState('');
     const [descripcion, setDescripcion] = useState('');
     const [errores, setErrores] = useState({});
+
+    useEffect(() => {
+        if (tareaEditando) {
+            setTitulo(tareaEditando.titulo);
+            setDescripcion(tareaEditando.descripcion);
+        } else {
+            setTitulo('');
+            setDescripcion('');
+        }
+    }, [tareaEditando]);
 
     const validarFormulario = () => {
         const nuevosErrores = {};
@@ -20,7 +30,12 @@ const FormularioTarea = ({ onSubmit }) => {
     const manejarEnvio = (e) => {
         e.preventDefault();
         if (validarFormulario()) {
-            onSubmit({ titulo, descripcion });
+            if (tareaEditando) {
+                actualizarTarea(tareaEditando.id, { titulo, descripcion });
+                setTareaEditando(null);
+            } else {
+                onSubmit({ titulo, descripcion });
+            }
             setTitulo('');
             setDescripcion('');
             setErrores({});
@@ -35,17 +50,7 @@ const FormularioTarea = ({ onSubmit }) => {
                     type="text"
                     id="titulo"
                     value={titulo}
-                    onChange={(e) => {
-                        setTitulo(e.target.value);
-                        if (!e.target.value.trim()) {
-                            setErrores({ ...errores, titulo: 'El título es obligatorio.' });
-                        } else if (e.target.value.length > 50) {
-                            setErrores({ ...errores, titulo: 'El título no puede tener más de 50 caracteres.' });
-                        } else {
-                            const { titulo, ...restoErrores } = errores;
-                            setErrores(restoErrores);
-                        }
-                    }}
+                    onChange={(e) => setTitulo(e.target.value)}
                 />
                 {errores.titulo && <p>{errores.titulo}</p>}
             </div>
@@ -57,8 +62,8 @@ const FormularioTarea = ({ onSubmit }) => {
                     onChange={(e) => setDescripcion(e.target.value)}
                 />
             </div>
-            <button type="submit" disabled={Object.keys(errores).length > 0}>
-                Agregar Tarea
+            <button type="submit">
+                {tareaEditando ? 'Guardar Cambios' : 'Agregar Tarea'}
             </button>
         </form>
     );
