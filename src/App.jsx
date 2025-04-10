@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import FormularioTarea from './components/FormularioTarea/FormularioTarea';
 import ListaTareas from './components/ListaTareas/ListaTareas';
 import FeedbackMessage from './components/FeedbackMessage/FeedbackMessage';
+import BuscadorTareas from './components/Buscador/BuscadorTareas';
 
 import './App.css';
 
 function App() {
-
   const [tareaEditando, setTareaEditando] = useState(null);
   const [feedback, setFeedback] = useState({ mensaje: '', tipo: '' });
-
-  // Inicialización de tareas desde localStorage
   const [tareas, setTareas] = useState(() => {
     try {
       const tareasGuardadas = localStorage.getItem('tareas');
@@ -20,10 +18,11 @@ function App() {
       return [];
     }
   });
+  const [tareasFiltradas, setTareasFiltradas] = useState(tareas);
 
-  // Guardar cambios en localStorage
   useEffect(() => {
     localStorage.setItem('tareas', JSON.stringify(tareas));
+    setTareasFiltradas(tareas); // Actualizar tareas filtradas cuando cambian las tareas
   }, [tareas]);
 
   const agregarTarea = (tarea) => {
@@ -68,8 +67,9 @@ function App() {
           actualizarTarea={actualizarTarea}
           setTareaEditando={setTareaEditando}
         />
+        <BuscadorTareas tareas={tareas} setTareasFiltradas={setTareasFiltradas} />
         <ListaTareas
-          tareas={tareas}
+          tareas={tareasFiltradas}
           eliminarTarea={eliminarTarea}
           actualizarTarea={actualizarTarea}
           setTareaEditando={setTareaEditando}
