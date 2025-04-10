@@ -1,0 +1,19 @@
+.feedbackMessage {
+    font-size: 1rem;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.feedbackMessage_error {
+    color: #ff0000;
+    background-color: #ffe6e6;
+    border: 1px solid #ff0000;
+}
+
+.feedbackMessage_exito {
+    color: #00ff00;
+    background-color: #e6ffe6;
+    border: 1px solid #00ff00;
+}

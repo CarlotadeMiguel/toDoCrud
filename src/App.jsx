@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import FormularioTarea from './components/FormularioTarea/FormularioTarea';
 import ListaTareas from './components/ListaTareas/ListaTareas';
+import FeedbackMessage from './components/FeedbackMessage/FeedbackMessage';
 
 import './App.css';
 
 function App() {
 
   const [tareaEditando, setTareaEditando] = useState(null);
+  const [feedback, setFeedback] = useState({ mensaje: '', tipo: '' });
 
   // Inicialización de tareas desde localStorage
   const [tareas, setTareas] = useState(() => {
@@ -32,10 +34,12 @@ function App() {
       completada: false,
     };
     setTareas([...tareas, nuevaTarea]);
+    setFeedback({ mensaje: 'Tarea agregada con éxito', tipo: 'exito' });
   };
 
   const eliminarTarea = (id) => {
     setTareas(tareas.filter((tarea) => tarea.id !== id));
+    setFeedback({ mensaje: 'Tarea eliminada correctamente', tipo: 'exito' });
   };
 
   const actualizarTarea = (id, datosActualizados) => {
@@ -46,10 +50,16 @@ function App() {
     );
   };
 
+  const limpiarFeedback = () => {
+    setFeedback({ mensaje: '', tipo: '' });
+  };
+
   return (
     <>
-
       <div>
+        {feedback.mensaje && (
+          <FeedbackMessage mensaje={feedback.mensaje} tipo={feedback.tipo} onClear={limpiarFeedback} />
+        )}
         <h1>Gestión de Tareas</h1>
         <FormularioTarea
           onSubmit={agregarTarea}
@@ -64,7 +74,6 @@ function App() {
           setTareaEditando={setTareaEditando}
         />
       </div>
-
     </>
   );
 }
