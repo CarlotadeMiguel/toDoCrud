@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './FormularioTarea.css';
+import './FormularioTarea.module.css';
 
 const FormularioTarea = ({ onSubmit, tareaEditando, actualizarTarea, setTareaEditando }) => {
     const [titulo, setTitulo] = useState('');

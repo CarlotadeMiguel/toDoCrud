@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Tarea.css';
+import './Tarea.module.css';
 
 const Tarea = ({ tarea, eliminarTarea, actualizarTarea, setTareaEditando }) => {
     const [modoEdicion, setModoEdicion] = useState(false);
