@@ -5,18 +5,21 @@ import ListaTareas from './ListaTareas/ListaTareas';
 import './App.css';
 
 function App() {
-  const [tareas, setTareas] = useState([]);
+
   const [tareaEditando, setTareaEditando] = useState(null);
 
-  // Cargar tareas desde localStorage al iniciar la aplicación
-  useEffect(() => {
-    const tareasGuardadas = localStorage.getItem('tareas');
-    if (tareasGuardadas) {
-      setTareas(JSON.parse(tareasGuardadas));
+  // Inicialización de tareas desde localStorage
+  const [tareas, setTareas] = useState(() => {
+    try {
+      const tareasGuardadas = localStorage.getItem('tareas');
+      return tareasGuardadas ? JSON.parse(tareasGuardadas) : [];
+    } catch (error) {
+      console.error('Error al cargar tareas:', error);
+      return [];
     }
-  }, []);
+  });
 
-  // Guardar tareas en localStorage cada vez que cambien
+  // Guardar cambios en localStorage
   useEffect(() => {
     localStorage.setItem('tareas', JSON.stringify(tareas));
   }, [tareas]);
