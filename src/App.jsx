@@ -48,6 +48,7 @@ function App() {
         tarea.id === id ? { ...tarea, ...datosActualizados } : tarea
       )
     );
+    setFeedback({ mensaje: 'Tarea actualizada correctamente', tipo: 'exito' });
   };
 
   const limpiarFeedback = () => {
