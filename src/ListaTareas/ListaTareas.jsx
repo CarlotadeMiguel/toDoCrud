@@ -1,4 +1,5 @@
 import React from 'react';
+import './ListaTareas.css';
 
 const ListaTareas = ({ tareas, eliminarTarea, actualizarTarea }) => {
     return (
