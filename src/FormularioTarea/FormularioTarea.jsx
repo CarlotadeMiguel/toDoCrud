@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './FormularioTarea.css';
 
 const FormularioTarea = ({ onSubmit }) => {
     const [titulo, setTitulo] = useState('');
@@ -46,7 +47,7 @@ const FormularioTarea = ({ onSubmit }) => {
                         }
                     }}
                 />
-                {errores.titulo && <p style={{ color: 'red' }}>{errores.titulo}</p>}
+                {errores.titulo && <p>{errores.titulo}</p>}
             </div>
             <div>
                 <label htmlFor="descripcion">Descripción:</label>
