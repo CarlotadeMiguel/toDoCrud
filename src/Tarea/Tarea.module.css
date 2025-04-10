@@ -1,46 +1,84 @@
-.tarea {
-    background-color: #f9f9f9;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.tareaItem {
     display: flex;
     flex-direction: column;
-    font-family: Arial, sans-serif;
+    background-color: var(--secondary-color);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: box-shadow var(--transition-time) ease;
+    width: 100%;
 }
 
-.tarea strong {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 5px;
+.tareaItem:hover {
+    box-shadow: 0 6px 8px var(--shadow-color);
 }
 
-.tarea p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
+.tareaInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    justify-content: center;
+    gap: 1rem;
 }
 
-.tarea button {
-    padding: 10px;
-    margin-top: 5px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
+.checkbox {
+    transform: scale(1.2);
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.tarea button:hover {
-    background-color: #0056b3;
+.titulo {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
 }
 
-.tarea button:first-of-type {
-    background-color: #dc3545;
+.descripcion {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.8rem;
 }
 
-.tarea button:first-of-type:hover {
-    background-color: #a71d2a;
+.botones {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.botonEliminar,
+.botonEditar {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color var(--transition-time) ease;
+}
+
+.botonEliminar:hover {
+    background-color: #e74c3c;
+}
+
+.botonEditar:hover {
+    background-color: #3a7bc8;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .tareaItem {
+        padding: 0.8rem;
+        /* Reduce el padding en pantallas pequeñas */
+        margin-bottom: 0.8rem;
+        font-size: calc(1rem - .2rem);
+        /* Ajusta el tamaño de fuente */
+        max-width: calc(90vw);
+        /* Limita el ancho */
+        margin: auto;
+        /* centrarlo*/
+
+    }
 }

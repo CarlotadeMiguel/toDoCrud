@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './FormularioTarea.module.css';
+import styles from './FormularioTarea.module.css';
 
 const FormularioTarea = ({ onSubmit, tareaEditando, actualizarTarea, setTareaEditando }) => {
     const [titulo, setTitulo] = useState('');
@@ -43,26 +43,28 @@ const FormularioTarea = ({ onSubmit, tareaEditando, actualizarTarea, setTareaEdi
     };
 
     return (
-        <form onSubmit={manejarEnvio}>
-            <div>
+        <form onSubmit={manejarEnvio} className={styles.formContainer}>
+            <div className={styles.inputGroup}>
                 <label htmlFor="titulo">Título:</label>
                 <input
                     type="text"
                     id="titulo"
                     value={titulo}
                     onChange={(e) => setTitulo(e.target.value)}
+                    className={`${styles.input} ${errores.titulo ? styles.error : ''}`}
                 />
-                {errores.titulo && <p>{errores.titulo}</p>}
+                {errores.titulo && <p className={styles.errorMessage}>{errores.titulo}</p>}
             </div>
-            <div>
+            <div className={styles.inputGroup}>
                 <label htmlFor="descripcion">Descripción:</label>
                 <textarea
                     id="descripcion"
                     value={descripcion}
                     onChange={(e) => setDescripcion(e.target.value)}
+                    className={styles.input}
                 />
             </div>
-            <button type="submit">
+            <button type="submit" className={styles.button}>
                 {tareaEditando ? 'Guardar Cambios' : 'Agregar Tarea'}
             </button>
         </form>

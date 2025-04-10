@@ -48,6 +48,7 @@ function App() {
 
   return (
     <>
+
       <div>
         <h1>Gestión de Tareas</h1>
         <FormularioTarea
@@ -63,6 +64,7 @@ function App() {
           setTareaEditando={setTareaEditando}
         />
       </div>
+
     </>
   );
 }

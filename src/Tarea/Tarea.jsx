@@ -1,49 +1,25 @@
-import React, { useState } from 'react';
-import './Tarea.module.css';
+import styles from './Tarea.module.css';
 
 const Tarea = ({ tarea, eliminarTarea, actualizarTarea, setTareaEditando }) => {
-    const [modoEdicion, setModoEdicion] = useState(false);
-    const [tituloEditado, setTituloEditado] = useState(tarea.titulo);
-    const [descripcionEditada, setDescripcionEditada] = useState(tarea.descripcion);
-
-    const guardarEdicion = () => {
-        actualizarTarea(tarea.id, { titulo: tituloEditado, descripcion: descripcionEditada });
-        setModoEdicion(false);
-    };
 
     return (
-        <li className="tarea">
-            {modoEdicion ? (
-                <>
-                    <input
-                        type="text"
-                        value={tituloEditado}
-                        onChange={(e) => setTituloEditado(e.target.value)}
-                    />
-                    <textarea
-                        value={descripcionEditada}
-                        onChange={(e) => setDescripcionEditada(e.target.value)}
-                    />
-                    <button onClick={guardarEdicion}>Guardar</button>
-                    <button onClick={() => setModoEdicion(false)}>Cancelar</button>
-                </>
-            ) : (
-                <>
-                    <div>
-                        <input
-                            type="checkbox"
-                            checked={tarea.completada}
-                            onChange={() =>
-                                actualizarTarea(tarea.id, { completada: !tarea.completada })
-                            }
-                        />
-                        <strong>{tarea.titulo}</strong>
-                    </div>
-                    <p>{tarea.descripcion}</p>
-                    <button onClick={() => eliminarTarea(tarea.id)}>Eliminar</button>
-                    <button onClick={() => setTareaEditando(tarea)}>Editar</button>
-                </>
-            )}
+        <li className={styles.tareaItem}>
+            <div className={styles.tareaInfo}>
+                <input
+                    className={styles.checkbox}
+                    type="checkbox"
+                    checked={tarea.completada}
+                    onChange={() =>
+                        actualizarTarea(tarea.id, { completada: !tarea.completada })
+                    }
+                />
+                <strong className={styles.titulo}>{tarea.titulo}</strong>
+            </div>
+            <p className={styles.descripcion}>{tarea.descripcion}</p>
+            <div className={styles.botones}>
+                <button className={styles.botonEliminar} onClick={() => eliminarTarea(tarea.id)}>Eliminar</button>
+                <button className={styles.botonEditar} onClick={() => setTareaEditando(tarea)}>Editar</button>
+            </div>
         </li>
     );
 };

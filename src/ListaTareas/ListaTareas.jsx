@@ -1,14 +1,14 @@
 import React from 'react';
 import Tarea from '../Tarea/Tarea';
-import './ListaTareas.module.css';
+import styles from './ListaTareas.module.css';
 
 const ListaTareas = ({ tareas, eliminarTarea, actualizarTarea, setTareaEditando }) => {
     return (
         <div>
             {tareas.length === 0 ? (
-                <p className="mensaje-sin-tareas">No hay tareas, ¡agrega una!</p>
+                <p className={styles.emptyMessage}>No hay tareas, ¡agrega una!</p>
             ) : (
-                <ul>
+                <ul className={styles.taskList}>
                     {tareas.map((tarea) => (
                         <Tarea
                             key={tarea.id}

@@ -1,69 +1,55 @@
-form {
-  max-width: 400px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+.formContainer {
+  background-color: var(--secondary-color);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  margin-bottom: 2rem;
+  transition: all var(--transition-time) ease;
 }
 
-form div {
-  margin-bottom: 15px;
+.formContainer:hover {
+  box-shadow: 0 6px 8px var(--shadow-color);
 }
 
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333;
+.inputGroup {
+  margin-bottom: 1rem;
 }
 
-input[type="text"],
-textarea {
+.input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  box-sizing: border-box;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border var(--transition-time) ease;
 }
 
-input[type="text"]:focus,
-textarea:focus {
-  border-color: #007bff;
+.input:focus {
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: var(--primary-color);
 }
 
-textarea {
-  resize: none;
-  height: 80px;
+.error {
+  border-color: var(--error-color);
 }
 
-p {
-  margin: 5px 0 0;
-  font-size: 12px;
-  color: red;
+.errorMessage {
+  color: var(--error-color);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
 }
 
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
+.button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: background-color var(--transition-time) ease;
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-button:hover:not(:disabled) {
-  background-color: #0056b3;
+.button:hover {
+  background-color: #3a7bc8;
 }
