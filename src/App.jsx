@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import FormularioTarea from './FormularioTarea/FormularioTarea';
-import ListaTareas from './ListaTareas/ListaTareas';
+import FormularioTarea from './components/FormularioTarea/FormularioTarea';
+import ListaTareas from './components/ListaTareas/ListaTareas';
 
 import './App.css';
 
