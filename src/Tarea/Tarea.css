@@ -1,0 +1,46 @@
+.tarea {
+    background-color: #f9f9f9;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+.tarea strong {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.tarea p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.tarea button {
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tarea button:hover {
+    background-color: #0056b3;
+}
+
+.tarea button:first-of-type {
+    background-color: #dc3545;
+}
+
+.tarea button:first-of-type:hover {
+    background-color: #a71d2a;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Tarea.css';
 
 const Tarea = ({ tarea, eliminarTarea, actualizarTarea }) => {
     return (

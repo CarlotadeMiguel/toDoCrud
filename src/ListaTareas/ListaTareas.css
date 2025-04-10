@@ -28,26 +28,9 @@ li p {
     margin-bottom: 10px;
 }
 
-button {
-    padding: 10px;
-    margin-top: 5px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-button:first-of-type {
-    background-color: #dc3545;
-}
-
-button:first-of-type:hover {
-    background-color: #a71d2a;
+.mensaje-sin-tareas {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin-top: 20px;
 }
