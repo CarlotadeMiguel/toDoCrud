@@ -34,7 +34,17 @@ const FormularioTarea = ({ onSubmit }) => {
                     type="text"
                     id="titulo"
                     value={titulo}
-                    onChange={(e) => setTitulo(e.target.value)}
+                    onChange={(e) => {
+                        setTitulo(e.target.value);
+                        if (!e.target.value.trim()) {
+                            setErrores({ ...errores, titulo: 'El título es obligatorio.' });
+                        } else if (e.target.value.length > 50) {
+                            setErrores({ ...errores, titulo: 'El título no puede tener más de 50 caracteres.' });
+                        } else {
+                            const { titulo, ...restoErrores } = errores;
+                            setErrores(restoErrores);
+                        }
+                    }}
                 />
                 {errores.titulo && <p style={{ color: 'red' }}>{errores.titulo}</p>}
             </div>
