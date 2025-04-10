@@ -1,24 +1,25 @@
 import React from 'react';
+import Tarea from '../Tarea/Tarea';
 import './ListaTareas.css';
 
 const ListaTareas = ({ tareas, eliminarTarea, actualizarTarea }) => {
     return (
-        <ul>
-            {tareas.map((tarea) => (
-                <li key={tarea.id}>
-                    <strong>{tarea.titulo}</strong>
-                    <p>{tarea.descripcion}</p>
-                    <button onClick={() => eliminarTarea(tarea.id)}>Eliminar</button>
-                    <button
-                        onClick={() =>
-                            actualizarTarea(tarea.id, { completada: !tarea.completada })
-                        }
-                    >
-                        {tarea.completada ? 'Marcar como Incompleta' : 'Marcar como Completa'}
-                    </button>
-                </li>
-            ))}
-        </ul>
+        <div>
+            {tareas.length === 0 ? (
+                <p className="mensaje-sin-tareas">No hay tareas, ¡agrega una!</p>
+            ) : (
+                <ul>
+                    {tareas.map((tarea) => (
+                        <Tarea
+                            key={tarea.id}
+                            tarea={tarea}
+                            eliminarTarea={eliminarTarea}
+                            actualizarTarea={actualizarTarea}
+                        />
+                    ))}
+                </ul>
+            )}
+        </div>
     );
 };
 
