@@ -3,6 +3,7 @@ import FormularioTarea from './components/FormularioTarea/FormularioTarea';
 import ListaTareas from './components/ListaTareas/ListaTareas';
 import FeedbackMessage from './components/FeedbackMessage/FeedbackMessage';
 import BuscadorTareas from './components/Buscador/BuscadorTareas';
+import OrdenarTareas from './components/OrdenarTareas/OrdenarTareas';
 
 import './App.css';
 
@@ -22,7 +23,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('tareas', JSON.stringify(tareas));
-    setTareasFiltradas(tareas); // Actualizar tareas filtradas cuando cambian las tareas
+    setTareasFiltradas(tareas);
   }, [tareas]);
 
   const agregarTarea = (tarea) => {
@@ -67,7 +68,10 @@ function App() {
           actualizarTarea={actualizarTarea}
           setTareaEditando={setTareaEditando}
         />
-        <BuscadorTareas tareas={tareas} setTareasFiltradas={setTareasFiltradas} />
+        <div className="buscadorOrdenarContainer">
+          <BuscadorTareas tareas={tareas} setTareasFiltradas={setTareasFiltradas} />
+          <OrdenarTareas tareas={tareas} setTareasFiltradas={setTareasFiltradas} />
+        </div>
         <ListaTareas
           tareas={tareasFiltradas}
           eliminarTarea={eliminarTarea}
